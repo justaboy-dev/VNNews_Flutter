@@ -55,7 +55,7 @@ class AuthencationService with ChangeNotifier {
         PageTransition<dynamic>(
             child: const MainScreen(),
             alignment: Alignment.center,
-            duration: const Duration(seconds: 1),
+            duration: const Duration(milliseconds: 1500),
             type: PageTransitionType.size),
         (Route<dynamic> route) => false);
   }
@@ -104,7 +104,7 @@ class AuthencationService with ChangeNotifier {
           PageTransition<dynamic>(
               child: const MainScreen(),
               alignment: Alignment.center,
-              duration: const Duration(seconds: 1),
+              duration: const Duration(milliseconds: 1500),
               type: PageTransitionType.size),
           (Route<dynamic> route) => false);
     } on FirebaseAuthException catch (e) {
@@ -179,7 +179,7 @@ class AuthencationService with ChangeNotifier {
         PageTransition<dynamic>(
             alignment: Alignment.center,
             child: const Welcome(),
-            duration: const Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 1500),
             type: PageTransitionType.leftToRightWithFade),
         (Route<dynamic> route) => false);
   }

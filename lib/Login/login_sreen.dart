@@ -18,11 +18,10 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 
-final formKey = GlobalKey<FormState>();
-String email = "";
-String password = "";
-
 class _LoginState extends State<Login> {
+  static final formKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

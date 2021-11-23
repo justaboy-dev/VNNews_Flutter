@@ -125,6 +125,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                         fontWeight: FontWeight.bold,
                                         fontSize: kDefaultFontSize + 4),
                                     softWrap: true,
+                                    textAlign: TextAlign.justify,
                                   ),
                                   minVerticalPadding: 10,
                                   subtitle: Padding(
@@ -135,6 +136,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                           color: Colors.black,
                                           fontSize: kDefaultFontSize - 2),
                                       softWrap: true,
+                                      textAlign: TextAlign.justify,
                                     ),
                                   ),
                                   trailing:

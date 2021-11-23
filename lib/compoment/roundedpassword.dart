@@ -5,10 +5,12 @@ import 'package:vnnews/compoment/textfieldcontainer.dart';
 class RoundedPassword extends StatefulWidget {
   final ValueChanged<String> onChanged;
   final String hintText;
+  final Color iconColors;
   const RoundedPassword({
     Key? key,
     required this.onChanged,
     required this.hintText,
+    this.iconColors = kDarkRed,
   }) : super(key: key);
 
   @override
@@ -34,14 +36,14 @@ class _RoundedPasswordState extends State<RoundedPassword> {
           hintText: widget.hintText,
           hintStyle:
               const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          icon: const Icon(
+          icon: Icon(
             Icons.lock,
-            color: kDarkRed,
+            color: widget.iconColors,
           ),
           suffixIcon: IconButton(
             icon: Icon(
               isVisible ? Icons.visibility : Icons.visibility_off,
-              color: kDarkRed,
+              color: widget.iconColors,
             ),
             onPressed: togglePassword,
           ),

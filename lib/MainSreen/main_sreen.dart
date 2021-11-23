@@ -5,6 +5,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:vnnews/Homepage/home_screen.dart';
 import 'package:vnnews/Service/cloudfirestore.dart';
+import 'package:vnnews/Settingpage/setting_screen.dart';
+import 'package:vnnews/Videopage/video_sreen.dart';
 import 'package:vnnews/compoment/constrant.dart';
 
 class MainScreen extends StatefulWidget {
@@ -61,15 +63,8 @@ class _MainScreenState extends State<MainScreen> {
       HomePageScreen(
         stream: stream,
       ),
-      Container(
-        color: Colors.green,
-      ),
-      Container(
-        color: Colors.blue,
-      ),
-      Container(
-        color: Colors.yellow,
-      ),
+      const VideoPage(),
+      const SettingPage(),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -84,9 +79,12 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 iconSize: size.width * 0.1,
               )
-            : SvgPicture.asset(
-                "assets/icons/news_logo.svg",
-                height: size.height * 0.05,
+            : Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: SvgPicture.asset(
+                  "assets/icons/news_logo.svg",
+                  height: size.height * 0.05,
+                ),
               ),
         title: isSearch && selectedIndex == 0
             ? TextField(
@@ -144,10 +142,10 @@ class _MainScreenState extends State<MainScreen> {
             tabBorder: Border.all(color: kLightRed, width: 1),
             curve: Curves.easeOutExpo,
             duration: const Duration(milliseconds: 200),
-            gap: 5,
+            gap: 30,
             color: Colors.grey[800],
             activeColor: kDarkRed,
-            iconSize: 25,
+            iconSize: 30,
             tabBackgroundColor: Colors.transparent,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             onTabChange: (value) {
@@ -161,10 +159,6 @@ class _MainScreenState extends State<MainScreen> {
               GButton(
                 icon: LineIcons.video,
                 text: 'Video',
-              ),
-              GButton(
-                icon: LineIcons.search,
-                text: 'Search',
               ),
               GButton(
                 icon: LineIcons.user,

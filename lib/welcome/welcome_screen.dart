@@ -6,14 +6,9 @@ import 'package:vnnews/SignUp/signup.dart';
 import 'package:vnnews/compoment/constrant.dart';
 import 'package:vnnews/compoment/roundedbutton.dart';
 
-class Welcome extends StatefulWidget {
+class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
 
-  @override
-  State<Welcome> createState() => _WelcomeState();
-}
-
-class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -61,7 +56,8 @@ class _WelcomeState extends State<Welcome> {
                 Navigator.push<dynamic>(
                     context,
                     PageTransition<dynamic>(
-                        child: const SignUp(),
+                        // ignore: prefer_const_constructors
+                        child: SignUp(),
                         duration: const Duration(milliseconds: 1500),
                         reverseDuration: const Duration(milliseconds: 1500),
                         type: PageTransitionType.scale,

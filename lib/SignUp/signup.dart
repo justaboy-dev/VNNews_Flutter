@@ -7,21 +7,21 @@ import 'package:vnnews/compoment/already_have_an_account_check.dart';
 import 'package:vnnews/compoment/constrant.dart';
 import 'package:vnnews/compoment/roundedbutton.dart';
 import 'package:vnnews/compoment/roundedinput.dart';
+import 'package:vnnews/compoment/roundedinput_novalid.dart';
 import 'package:vnnews/compoment/roundedpassword.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-final formKey = GlobalKey<FormState>();
-String email = "";
-String password = "";
-String username = "";
-
 class _SignUpState extends State<SignUp> {
+  static final signupformKey = GlobalKey<FormState>();
+  String email = "";
+  String password = "";
+  String username = "";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,7 +31,7 @@ class _SignUpState extends State<SignUp> {
         width: double.infinity,
         child: SingleChildScrollView(
           child: Form(
-              key: formKey,
+              key: signupformKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -59,7 +59,7 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: size.height * 0.02,
                   ),
-                  RoundedInput(
+                  RoundedInputNormal(
                       icon: Icons.person,
                       hintText: "Tên người dùng",
                       onChange: (value) {
@@ -72,6 +72,7 @@ class _SignUpState extends State<SignUp> {
                         email = value;
                       }),
                   RoundedPassword(
+                    iconColors: kDarkRed,
                     hintText: "Mật khẩu",
                     onChanged: (value) {
                       password = value;
@@ -79,7 +80,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   RoundedButton(
                       onPress: () {
-                        if (formKey.currentState!.validate()) {
+                        if (signupformKey.currentState!.validate()) {
                           AuthencationService()
                               .emailSignUp(context, email, password, username);
                         }
