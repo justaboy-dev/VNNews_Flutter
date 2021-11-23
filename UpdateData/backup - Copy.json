@@ -1,0 +1,20 @@
+{
+    "__collections__": {
+        "Food": {
+            "0": {
+                "id": 0,
+                "imageUrl": "images/canh-ga-chien-nuoc-mam-500.jpg",
+                "tittle": "",
+                "description": "",
+                "content": "",
+                "posttime" : ""
+            }
+        },
+        "User": {
+            "qAANbM9AV6dx5SM9bjHj7hRFvy13": {
+                "email": "tranhatan04122000@gmail.com",
+                "wishlist": []
+            }
+        }
+    }
+}

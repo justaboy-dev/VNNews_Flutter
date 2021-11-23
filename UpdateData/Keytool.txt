@@ -1,0 +1,10 @@
+
+
+Gennerate local key to sefl-signed
+
+
+keytool -list -v -alias androiddebugkey -keystore C:\Users\Admin\.android\debug.keystore
+
+
+
+
