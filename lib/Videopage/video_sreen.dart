@@ -71,8 +71,8 @@ class _VideoPageState extends State<VideoPage> {
                               return InkWell(
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 5),
-                                  height: 300,
+                                      vertical: 5, horizontal: 5),
+                                  height: 320,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -92,9 +92,7 @@ class _VideoPageState extends State<VideoPage> {
                                                   videoSrc: futuresnapshot.data
                                                       .toString());
                                             } else {
-                                              return Container(
-                                                height: 100,
-                                              );
+                                              return Container();
                                             }
                                           }),
                                       Text(
@@ -106,7 +104,7 @@ class _VideoPageState extends State<VideoPage> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0),
+                                            vertical: 5.0),
                                         child: Row(
                                           children: [
                                             Padding(
@@ -158,25 +156,24 @@ class _VideoPageState extends State<VideoPage> {
                             }),
                       );
                     } else {
-                      return const Padding(
-                        padding: EdgeInsets.all(100),
-                        child: SizedBox(
-                          child: Center(
-                            child: LoadingIndicator(
-                                indicatorType: Indicator.ballRotate,
-                                colors: [
-                                  Colors.red,
-                                  Colors.green,
-                                  Colors.blue,
-                                  Colors.black,
-                                  Colors.amber,
-                                  Colors.orange,
-                                  Colors.yellow,
-                                ],
-                                strokeWidth: 0.4,
-                                backgroundColor: Colors.transparent,
-                                pathBackgroundColor: Colors.black),
-                          ),
+                      return Center(
+                        child: Container(
+                          constraints: const BoxConstraints(
+                              maxHeight: 100, maxWidth: 100),
+                          child: const LoadingIndicator(
+                              indicatorType: Indicator.ballRotate,
+                              colors: [
+                                Colors.red,
+                                Colors.green,
+                                Colors.blue,
+                                Colors.black,
+                                Colors.amber,
+                                Colors.orange,
+                                Colors.yellow,
+                              ],
+                              strokeWidth: 0.4,
+                              backgroundColor: Colors.transparent,
+                              pathBackgroundColor: Colors.black),
                         ),
                       );
                     }

@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 class CloudFireStore {
   FirebaseStorage rootRef =
-      FirebaseStorage.instanceFor(bucket: "gs://vnnews-973c9.appspot.com");
+      FirebaseStorage.instanceFor(bucket: "gs://vnnews-4cecd.appspot.com");
   late CollectionReference collectionReference;
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
@@ -31,6 +31,11 @@ class CloudFireStore {
         .snapshots();
   }
 
+  Stream<QuerySnapshot> getPostWithID(String? id) {
+    collectionReference = firebaseFirestore.collection("Post");
+    return collectionReference.where("id", isEqualTo: id).snapshots();
+  }
+
   Stream<QuerySnapshot> getVideo() {
     collectionReference = firebaseFirestore.collection("Video");
     return collectionReference
@@ -51,14 +56,14 @@ class CloudFireStore {
     String downloadUrl = "";
     String filename = file.name;
     UploadTask uploadTask =
-        rootRef.ref().child("UserAvatar").child(filename).putFile(imageFile);
+        rootRef.ref().child("useravatar").child(filename).putFile(imageFile);
     TaskSnapshot taskSnapshot = await uploadTask;
     downloadUrl = await taskSnapshot.ref.getDownloadURL();
     return downloadUrl;
   }
 
   Future<void> updateView(int id) async {
-    collectionReference = firebaseFirestore.collection("Food");
+    collectionReference = firebaseFirestore.collection("Post");
     collectionReference
         .where("id", isEqualTo: id)
         .get()

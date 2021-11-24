@@ -36,10 +36,11 @@ class _SingleVideoPlayerState extends State<SingleVideoPlayer> {
             ? AspectRatio(
                 aspectRatio: controller.value.aspectRatio,
                 child: VideoPlayer(controller))
-            : const Padding(
-                padding: EdgeInsets.all(100),
-                child: Center(
-                  child: LoadingIndicator(
+            : Center(
+                child: Container(
+                  constraints:
+                      const BoxConstraints(maxHeight: 100, maxWidth: 100),
+                  child: const LoadingIndicator(
                       indicatorType: Indicator.ballRotate,
                       colors: [
                         Colors.red,

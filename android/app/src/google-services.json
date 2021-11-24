@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "519929082521",
-    "project_id": "vnnews-973c9",
-    "storage_bucket": "vnnews-973c9.appspot.com"
+    "project_number": "323056955649",
+    "project_id": "vnnews-4cecd",
+    "storage_bucket": "vnnews-4cecd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:519929082521:android:045b0a122bcd90a4b67e08",
+        "mobilesdk_app_id": "1:323056955649:android:a48920cbb0fd8bc07b6b00",
         "android_client_info": {
           "package_name": "com.example.vnnews"
         }
       },
       "oauth_client": [
         {
-          "client_id": "519929082521-o8ptonrp825t6ktav16ti63emogeveu6.apps.googleusercontent.com",
+          "client_id": "323056955649-j1cf11c6tpff2v108om9ltilemjtrarb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.vnnews",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "519929082521-8ejl2u5huh6ert0b6g47uc77nvo3p1rs.apps.googleusercontent.com",
+          "client_id": "323056955649-qa4g9ad7ji1aq0cm6lnro7gqci3a5605.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAcn8Wc5m0N5i0Qf60I3pKC2KwmprdtPM4"
+          "current_key": "AIzaSyBB3twkOgsxSgQ99QcOtlodqfEHB0nx10I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "519929082521-8ejl2u5huh6ert0b6g47uc77nvo3p1rs.apps.googleusercontent.com",
+              "client_id": "323056955649-qa4g9ad7ji1aq0cm6lnro7gqci3a5605.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

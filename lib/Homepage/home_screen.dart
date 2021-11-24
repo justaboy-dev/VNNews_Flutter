@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:vnnews/Postview/postview_screen.dart';
 import 'package:vnnews/Service/cloudfirestore.dart';
 import 'package:vnnews/compoment/constrant.dart';
 
@@ -93,7 +95,21 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             itemBuilder: (context, index) {
                               return InkWell(
                                 onTap: () {
-                                  print(snapshot.data!.docs[index]["id"]);
+                                  CloudFireStore().updateView(
+                                      snapshot.data!.docs[index]["id"]);
+
+                                  Navigator.push<dynamic>(
+                                      context,
+                                      PageTransition<dynamic>(
+                                          child: PostView(
+                                            post: snapshot.data!.docs[index],
+                                          ),
+                                          duration:
+                                              const Duration(milliseconds: 800),
+                                          reverseDuration:
+                                              const Duration(milliseconds: 800),
+                                          type: PageTransitionType.bottomToTop,
+                                          alignment: Alignment.bottomRight));
                                 },
                                 child: ListTile(
                                   leading: Container(
@@ -168,7 +184,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                         ),
                       );
                     }
-                  })
+                  }),
             ],
           ),
         ));
