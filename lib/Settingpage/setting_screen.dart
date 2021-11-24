@@ -31,7 +31,9 @@ class _SettingPageState extends State<SettingPage> {
   void changeName(BuildContext context) async {
     String message = "";
     if (username.isNotEmpty) {
-      await authencationService.updateUsername(username);
+      await authencationService.updateUsername(username).then((_) async {
+        await CloudFireStore().updateUser();
+      });
       Navigator.of(context).pop();
       setState(() {});
       message = "Thay đổi thành công";
@@ -96,7 +98,8 @@ class _SettingPageState extends State<SettingPage> {
     );
     if (pickedFile != null) {
       String url = await CloudFireStore().upLoadAvatar(pickedFile);
-      authencationService.updateAvatar(url).then((value) {
+      authencationService.updateAvatar(url).then((value) async {
+        await CloudFireStore().updateUser();
         showToast(
           "Thay đổi thành công",
           context: context,

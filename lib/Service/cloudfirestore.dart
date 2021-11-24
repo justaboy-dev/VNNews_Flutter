@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vnnews/Service/authencation.dart';
 
 class CloudFireStore {
   FirebaseStorage rootRef =
@@ -49,6 +50,37 @@ class CloudFireStore {
 
   Future<String> getImageUrl(String path) async {
     return await rootRef.ref().child(path).getDownloadURL();
+  }
+
+  Stream<QuerySnapshot> getUserAvatarPath(String uid) {
+    collectionReference = firebaseFirestore.collection("Users");
+    return collectionReference.where("uid", isEqualTo: uid).snapshots();
+  }
+
+  Future<void> updateUser() async {
+    collectionReference = firebaseFirestore.collection("Users");
+    collectionReference
+        .where("uid", isEqualTo: await AuthencationService().getCurrentUserID())
+        .get()
+        .then((QuerySnapshot snapshot) async {
+      for (var value in snapshot.docs) {
+        value.reference.update({
+          "image": await AuthencationService().getCurrentUserImage(),
+          "name": await AuthencationService().getCurrentUserName(),
+        });
+      }
+    });
+  }
+
+  Future<void> createUser() async {
+    collectionReference = firebaseFirestore.collection("Users");
+    collectionReference
+        .doc(await AuthencationService().getCurrentUserID())
+        .set({
+      "uid": await AuthencationService().getCurrentUserID(),
+      "image": await AuthencationService().getCurrentUserImage(),
+      "name": await AuthencationService().getCurrentUserName()
+    });
   }
 
   Future<String> upLoadAvatar(XFile? file) async {

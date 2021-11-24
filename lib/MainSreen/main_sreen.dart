@@ -25,7 +25,6 @@ class _MainScreenState extends State<MainScreen> {
   void ontap(int index) {
     setState(() {
       isSearch = false;
-      //stream = FireBaseService().getFood();
       selectedIndex = index;
     });
   }

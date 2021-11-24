@@ -25,7 +25,7 @@ class _PostViewState extends State<PostView> {
     Future<String> postImage =
         CloudFireStore().getImageUrl(widget.post["imageUrl"].toString());
 
-    List<dynamic> listcomment = widget.post["commenttest"].toList();
+    List<dynamic> listcomment = widget.post["comment"].toList();
 
     return Scaffold(
       appBar: AppBar(

@@ -5,6 +5,7 @@ import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:vnnews/MainSreen/main_sreen.dart';
+import 'package:vnnews/Service/cloudfirestore.dart';
 import 'package:vnnews/welcome/welcome_screen.dart';
 
 class AuthencationService with ChangeNotifier {
@@ -37,7 +38,7 @@ class AuthencationService with ChangeNotifier {
     );
     UserCredential user = await auth.signInWithCredential(credential);
     if (user.additionalUserInfo!.isNewUser) {
-      //await addUser();
+      await CloudFireStore().createUser();
     }
     showToast(
       'Đăng nhập thành công',
@@ -135,9 +136,9 @@ class AuthencationService with ChangeNotifier {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      emailSignIn(context, email, password).then((value) {
+      emailSignIn(context, email, password).then((value) async {
         updateUsername(username);
-        //addUser();
+        CloudFireStore().createUser();
       });
     } on FirebaseAuthException catch (ex) {
       if (ex.code == "email-already-in-use") {
