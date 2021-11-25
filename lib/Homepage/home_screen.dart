@@ -73,9 +73,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           child: Text(
                             value,
                             style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: kDefaultFontSize + 3,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.black,
+                              fontSize: kDefaultFontSize + 3,
+                            ),
                           ),
                         );
                       }).toList(),
@@ -102,7 +102,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                       context,
                                       PageTransition<dynamic>(
                                           child: PostView(
-                                            post: snapshot.data!.docs[index],
+                                            postID: snapshot.data!.docs[index]
+                                                ["id"],
                                           ),
                                           duration:
                                               const Duration(milliseconds: 800),
@@ -113,8 +114,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                 },
                                 child: ListTile(
                                   leading: Container(
-                                    height: 30,
-                                    width: 60,
+                                    height: 50,
+                                    width: 70,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
                                     ),

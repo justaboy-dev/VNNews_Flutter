@@ -26,7 +26,9 @@ class RoundedInputNormal extends StatelessWidget {
             ),
             hintText: hintText,
             hintStyle: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold),
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: kDefaultFontSize),
             border: InputBorder.none),
         validator: (value) {
           if (value == null || value.isEmpty) {

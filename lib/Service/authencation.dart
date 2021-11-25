@@ -36,7 +36,7 @@ class AuthencationService with ChangeNotifier {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    UserCredential user = await auth.signInWithCredential(credential);
+    UserCredential? user = await auth.signInWithCredential(credential);
     if (user.additionalUserInfo!.isNewUser) {
       await CloudFireStore().createUser();
     }
@@ -137,8 +137,8 @@ class AuthencationService with ChangeNotifier {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
       emailSignIn(context, email, password).then((value) async {
-        updateUsername(username);
-        CloudFireStore().createUser();
+        await updateUsername(username);
+        await CloudFireStore().createUser();
       });
     } on FirebaseAuthException catch (ex) {
       if (ex.code == "email-already-in-use") {

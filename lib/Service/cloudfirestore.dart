@@ -32,7 +32,7 @@ class CloudFireStore {
         .snapshots();
   }
 
-  Stream<QuerySnapshot> getPostWithID(String? id) {
+  Stream<QuerySnapshot> getPostWithID(int? id) {
     collectionReference = firebaseFirestore.collection("Post");
     return collectionReference.where("id", isEqualTo: id).snapshots();
   }
@@ -55,6 +55,25 @@ class CloudFireStore {
   Stream<QuerySnapshot> getUserAvatarPath(String uid) {
     collectionReference = firebaseFirestore.collection("Users");
     return collectionReference.where("uid", isEqualTo: uid).snapshots();
+  }
+
+  Stream<QuerySnapshot> getUserName(String uid) {
+    collectionReference = firebaseFirestore.collection("Users");
+    return collectionReference.where("uid", isEqualTo: uid).snapshots();
+  }
+
+  Future<void> addComment(int id, String content) async {
+    collectionReference = firebaseFirestore.collection("Post");
+    List<Map> list = [
+      {
+        "content": content,
+        "timestamp": Timestamp.now(),
+        "uid": await AuthencationService().getCurrentUserID()
+      }
+    ];
+    await collectionReference
+        .doc(id.toString())
+        .update({"comment": FieldValue.arrayUnion(list)});
   }
 
   Future<void> updateUser() async {

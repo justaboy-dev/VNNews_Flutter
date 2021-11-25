@@ -12,7 +12,7 @@ class UserAvatar extends StatelessWidget {
       stream: CloudFireStore().getUserAvatarPath(uid),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState != ConnectionState.waiting) {
-          if (snapshot.hasData) {
+          if (snapshot.data!.docs[0]["image"] != null) {
             return Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
