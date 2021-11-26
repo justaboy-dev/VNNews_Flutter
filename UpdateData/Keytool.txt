@@ -8,3 +8,30 @@ keytool -list -v -alias androiddebugkey -keystore C:\Users\Admin\.android\debug.
 
 
 
+
+Install
+
+
+https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_2.5.3-stable.zip
+
+
+
+ANDROID_HOME C:\Users\Admin\AppData\Local\Android
+
+ANDROID_SDK_ROOT C:\Users\Admin\AppData\Local\Android\Sdk
+
+JAVA_HOME C:\Program Files (x86)\Java\jdk1.8.0_141
+
+JRE_HOME  C:\Program Files\Java\jre1.8.0_291
+
+
+Path:
+C:\src\flutter\bin
+C:\Program Files\nodejs
+C:\Program Files (x86)\Java\jdk1.8.0_141\bin
+C:\Program Files\Java\jre1.8.0_291\bin
+C:\Users\Admin\AppData\Local\Android\Sdk\tools\bin
+C:\Users\Admin\AppData\Local\Android\Sdk
+
+flutter config --android-sdk "path"
+flutter doctor --android-licenses
